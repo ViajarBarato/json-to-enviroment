@@ -10,6 +10,11 @@
 
     <StackPanel Margin="10">
 
+        <ComboBox Name="combo" Width="120" HorizontalAlignment="Right" Margin="10">
+            <ComboBoxItem IsSelected="True" Content="Daemon" HorizontalAlignment="Left" Width="118"/>
+            <ComboBoxItem Content="Outro" HorizontalAlignment="Left" Width="118"/>
+        </ComboBox>
+
         <Label   Content="Prefixo" />
         <TextBox  Name="prefixo"  Margin="10" />
 

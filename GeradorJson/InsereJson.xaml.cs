@@ -20,17 +20,28 @@ namespace GeradorJson
             string _prefixo = this.prefixo.Text; // "VBC_";
             string _imagem = this.imagem.Text; // "CaminhoDaImagemDocker";
             string semEspacos = jsonEnv.Text.Replace(" ", "");
+            string itemSelecionado = combo.SelectionBoxItem.ToString();
 
             //filtrando os parametros
 
             JsonTextReader reader = new JsonTextReader(new StringReader(semEspacos));
             string novoValor = "";
+            string inicio = "";
+            string fim = "";
+
+            if (itemSelecionado == "Daemon")
+            {
+                novoValor = "docker run -d \\  \n";
+                inicio = "--env ";
+                fim = "\\";
+            }
+
             while (reader.Read())
             {
                 if (reader.Value != null)
                 {
                     if (reader.TokenType.ToString() != "PropertyName")
-                        novoValor += $"{_prefixo}{reader.Path.ToString().Replace(".", "__")}={reader.Value}";
+                        novoValor += $"{inicio}{_prefixo}{reader.Path.ToString().Replace(".", "__")}={reader.Value} {fim}";
                     else
                     {
                         novoValor += "\n";
@@ -38,7 +49,7 @@ namespace GeradorJson
                 }
             }
 
-            RetornoJson retornoJson = new RetornoJson(novoValor);
+            RetornoJson retornoJson = new RetornoJson(novoValor + " " +_imagem);
             this.NavigationService.Navigate(retornoJson);
         }
     }
