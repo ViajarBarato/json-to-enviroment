@@ -9,6 +9,6 @@
       Title="RetornoJson">
 
     <StackPanel Margin="10">
-        <TextBox Name="Conversor" Width="Auto" Height="400"  TextWrapping="Wrap" Text="TextBox" />
+        <TextBox Name="Conversor" Width="Auto" Height="468"  TextWrapping="Wrap" Text="TextBox" />
     </StackPanel>
 </Page>

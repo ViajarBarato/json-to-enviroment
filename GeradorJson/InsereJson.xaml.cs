@@ -17,8 +17,12 @@ namespace GeradorJson
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+
+            try
+            {
+            
             string _prefixo = this.prefixo.Text; // "VBC_";
-            string _imagem = this.imagem.Text; // "CaminhoDaImagemDocker";
+            string _imagem = this.imagem.Text; // "viajarbarato.ch.dataapi:latest";
             string semEspacos = jsonEnv.Text.Replace(" ", "");
             string itemSelecionado = combo.SelectionBoxItem.ToString();
 
@@ -35,6 +39,13 @@ namespace GeradorJson
                 inicio = "--env ";
                 fim = "\\";
             }
+            else if (itemSelecionado == "Interactive")
+            {
+                novoValor = "docker run --it \\  \n";
+                inicio = "--env ";
+                fim = "\\";
+            }
+            
 
             while (reader.Read())
             {
@@ -51,6 +62,11 @@ namespace GeradorJson
 
             RetornoJson retornoJson = new RetornoJson(novoValor + " " +_imagem);
             this.NavigationService.Navigate(retornoJson);
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show("Coloque um formato de json válido - Erro: " + ex.Message, "Atenção!", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
         }
     }
 }
