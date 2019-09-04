@@ -1,0 +1,14 @@
+﻿<Page x:Class="GeradorJson.RetornoJson"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:GeradorJson"
+      mc:Ignorable="d"
+      Width="700" Height="500"
+      Title="RetornoJson">
+
+    <StackPanel Margin="10">
+        <TextBox Name="Conversor" Width="Auto" Height="468"  TextWrapping="Wrap" Text="TextBox" />
+    </StackPanel>
+</Page>
